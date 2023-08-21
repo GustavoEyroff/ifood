@@ -1,0 +1,216 @@
+int valorPedido = 0;
+bool continuar2 = true;
+while (continuar2)
+{
+
+    Console.WriteLine("=== Menu ===");
+    Console.WriteLine("1. Hambúrguer");
+    Console.WriteLine("2. Pizza");
+    Console.WriteLine("3. Bebida");
+
+    Console.Write("Escolha uma opção: ");
+    int opcao = int.Parse(Console.ReadLine());
+
+
+
+    if (opcao == 1)
+    {
+
+        int valorBacon = 10;
+        int valorCalabresa = 15;
+        int valorXTudo = 20;
+        bool continuar = true;
+
+
+        {
+            Console.WriteLine("1- Hamburguer de bacon: 10$");
+            Console.WriteLine("2- Hamburguer de calabresa: 15$");
+            Console.WriteLine("3- X Tudo: 20$");
+
+            int opcaoHamburguer = int.Parse(Console.ReadLine());
+
+            switch (opcaoHamburguer)
+            {
+                case 1:
+                    Console.WriteLine("Ok, foi adicionado um Hamburguer de bacon");
+                    valorPedido += valorBacon;
+
+                    break;
+                case 2:
+                    Console.WriteLine("Ok, foi adicionado um Hamburguer de Calabresa");
+                    valorPedido += valorCalabresa;
+
+                    break;
+                case 3:
+                    Console.WriteLine("Ok, foi adicionado um X Tudo");
+                    valorPedido += valorXTudo;
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida");
+                    break;
+
+            }
+            Console.WriteLine("Voce quer adicionar algo? sim ou nao");
+            string voltaMenu = Console.ReadLine();
+
+            continuar2 = voltaMenu == "sim";
+
+            //Jeito clean
+
+
+            /*Jeito IF
+            if (continuar2 == "sim")
+                continuar = true;
+            else
+                continuar = false;
+
+            //Jeito ternario
+            continuar = continuar2 == "sim" ? true : false;
+            */
+
+
+
+        }
+    }
+
+    else if (opcao == 2)
+    {
+        int valorPizza1 = 100;
+        int valorPizza2 = 60;
+        int valorPizza3 = 20;
+        bool continuar = true;
+
+
+        {
+            Console.WriteLine("1- Pizza gigante + baby doce: 100$");
+            Console.WriteLine("2- Pizza média + Refri 2l : 60$");
+            Console.WriteLine("3- Pizza broto   : 20$");
+
+            int opcaoPizza = int.Parse(Console.ReadLine());
+
+            switch (opcaoPizza)
+            {
+                case 1:
+                    Console.WriteLine("Ok, foi adicionado o combo 1");
+                    valorPedido += valorPizza1;
+
+                    break;
+                case 2:
+                    Console.WriteLine("Ok, foi adicionado o combo 2");
+                    valorPedido += valorPizza2;
+
+                    break;
+                case 3:
+                    Console.WriteLine("Ok, foi adicionado o combo 3");
+                    valorPedido += valorPizza3;
+
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida");
+                    break;
+
+            }
+            Console.WriteLine("Voce quer adicionar algo? sim ou nao");
+            string voltaMenu = Console.ReadLine();
+
+            continuar2 = voltaMenu == "sim";
+
+        }
+    }
+
+    else if (opcao == 3)
+    {
+        int valorCoca = 8;
+        int valorPepsi = 6;
+        int valorGuarana = 4;
+        bool continuar = true;
+
+
+        {
+            Console.WriteLine("1- Uma Coca-Cola 2L : 8$");
+            Console.WriteLine("2- Uma Pepsi 2L : 6$");
+            Console.WriteLine("3- Um Guaraná : 4$");
+
+            int opcaoBebida = int.Parse(Console.ReadLine());
+
+            switch (opcaoBebida)
+            {
+                case 1:
+                    Console.WriteLine("Ok, foi adicionado uma coca");
+                    valorPedido += valorCoca;
+
+                    break;
+                case 2:
+                    Console.WriteLine("Ok, foi adicionado uma pepsi");
+                    valorPedido += valorPepsi;
+
+                    break;
+                case 3:
+                    Console.WriteLine("Ok, foi adicionado um guaraná");
+                    valorPedido += valorGuarana;
+
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida");
+                    break;
+
+            }
+            Console.WriteLine("Voce quer adicionar algo? sim ou nao");
+            string voltaMenu = Console.ReadLine();
+
+            continuar2 = voltaMenu == "sim";
+
+
+
+        }
+    }
+}
+Console.WriteLine("=== Pagamento ===");
+Console.WriteLine("1. Cartão de Crédito ou débito");
+Console.WriteLine("2. Dinheiro");
+Console.Write("Escolha uma opção de pagamento: ");
+int opcaoPagamento = int.Parse(Console.ReadLine());
+
+double valorPago = 0;
+double troco = 0;
+
+if (opcaoPagamento == 1) // Pagamento com cartão
+{
+    Console.WriteLine("Pagamento com cartão efetuado com sucesso!");
+    valorPago = valorPedido;
+}
+else if (opcaoPagamento == 2) // Pagamento em dinheiro
+{
+    Console.Write("Digite o valor em dinheiro: ");
+    double valorEmDinheiro = double.Parse(Console.ReadLine());
+
+    if (valorEmDinheiro >= valorPedido)
+    {
+        troco = valorEmDinheiro - valorPedido;
+        valorPago = valorPedido;
+        Console.WriteLine($"Pagamento em dinheiro efetuado com sucesso! Troco: {troco}");
+    }
+    else
+    {
+        Console.WriteLine("Valor em dinheiro insuficiente.");
+        continuar2 = false;
+    }
+}
+else
+{
+    Console.WriteLine("Opção de pagamento inválida.");
+    continuar2 = false;
+}
+Console.WriteLine("Resumo do Pedido:");
+Console.WriteLine($"Valor total do pedido: {valorPedido}$");
+
+if (opcaoPagamento == 1)
+{
+    Console.WriteLine("Método de pagamento: Cartão de Crédito ou Débito");
+}
+else if (opcaoPagamento == 2)
+{
+    Console.WriteLine("Método de pagamento: Dinheiro");
+    Console.WriteLine($"Valor pago: {valorPago}$");
+    Console.WriteLine($"Troco: {troco}$");
+}
